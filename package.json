@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "type": "module",
   "description": "[![Actions Status](https://github.com/buldogic/frontend-project-46/workflows/hexlet-check/badge.svg)](https://github.com/buldogic/frontend-project-46/actions)",
-  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -14,5 +13,8 @@
   "license": "ISC",
   "devDependencies": {
     "commander": "^10.0.1"
+  },
+  "dependencies": {
+    "lodash": "^4.17.21"
   }
 }
