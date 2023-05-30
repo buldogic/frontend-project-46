@@ -1,29 +1,32 @@
 
 name: Test
 on: [push, pull_request, workflow_dispatch]
+
+
 jobs:
-  build-service:
-    runs-on: ubuntu-18.04
-    steps:
-      - uses: actions/checkout@v2
+  # test:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v3
+  #     - uses: actions/setup-node@v3
+  #     - name: Install
+  #       run: npm install
+  #     - name: Test and Coverage
+  #       run: npm run test:cov  
 
-      ... // You must generate a test coverage report here.
+  #     - name: Update Coverage Badge
+  #       uses: we-cli/coverage-badge-action@main
+  coverage:
+  runs-on: ubuntu-latest
+  steps:
+    - uses: actions/checkout@v2
 
-      - uses: pooi/coverage-badge@1.0.0
-        with:
-          token: ${{ secret.GITHUB_ACCESS_TOKEN }}
-          xml-test-report-path: ${SOURCE_PATH}/build/reports/kover/report.xml
-          html-test-report-path: ${SOURCE_PATH}/build/reports/kover/html
-# jobs:
-#   test:
-#     runs-on: ubuntu-latest
-#     steps:
-#       - uses: actions/checkout@v3
-#       - uses: actions/setup-node@v3
-#       - name: Install
-#         run: npm install
-#       - name: Test and Coverage
-#         run: npm run test:cov  
+    - run: npm install
+    - run: npm run coverage
 
-#       - name: Update Coverage Badge
-#         uses: we-cli/coverage-badge-action@main
+    - name: check
+      uses: inzephirum/gha-test-coverage-check
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        min_threshold: '100'
+        report_file_path: './coverage/lcov.info'
