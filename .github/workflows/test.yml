@@ -2,15 +2,28 @@
 name: Test
 on: [push, pull_request, workflow_dispatch]
 jobs:
-  test:
-    runs-on: ubuntu-latest
+  build-service:
+    runs-on: ubuntu-18.04
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-      - name: Install
-        run: npm install
-      - name: Test and Coverage
-        run: npm run test:cov  
+      - uses: actions/checkout@v2
 
-      - name: Update Coverage Badge
-        uses: we-cli/coverage-badge-action@main
+      ... // You must generate a test coverage report here.
+
+      - uses: pooi/coverage-badge@1.0.0
+        with:
+          token: ${{ secret.GITHUB_ACCESS_TOKEN }}
+          xml-test-report-path: ${SOURCE_PATH}/build/reports/kover/report.xml
+          html-test-report-path: ${SOURCE_PATH}/build/reports/kover/html
+# jobs:
+#   test:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - uses: actions/checkout@v3
+#       - uses: actions/setup-node@v3
+#       - name: Install
+#         run: npm install
+#       - name: Test and Coverage
+#         run: npm run test:cov  
+
+#       - name: Update Coverage Badge
+#         uses: we-cli/coverage-badge-action@main
