@@ -1,0 +1,31 @@
+
+name: Test
+on: [push, pull_request, workflow_dispatch]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+      - name: Install
+        run: npm install
+      - name: Test and Coverage
+        run: npm run test:cov  
+
+      - name: Update Coverage Badge
+        uses: we-cli/coverage-badge-action@main
+  # coverage:
+  # runs-on: ubuntu-latest
+  # steps:
+  #   - uses: actions/checkout@v2
+
+  #   - run: npm install
+  #   - run: npm run coverage
+
+  #   - name: check
+  #     uses: inzephirum/gha-test-coverage-check
+  #     with:
+  #       github_token: ${{ secrets.GITHUB_TOKEN }}
+  #       min_threshold: '100'
+  #       report_file_path: './coverage/lcov.info'
