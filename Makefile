@@ -20,6 +20,9 @@ tets:
 build:
 	./gradlew clean build
 
+report:
+	./gradlew jacocoTestReport
+
 build-run:
 	 build run
 
