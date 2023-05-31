@@ -15,3 +15,12 @@ gendiff -h:
 
 tets:
 	npx jest
+
+
+build:
+	./gradlew clean build
+
+build-run:
+	 build run
+
+.PHONY: build
