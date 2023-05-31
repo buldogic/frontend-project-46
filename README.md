@@ -6,5 +6,4 @@
 
 [![Maintainability](https://api.codeclimate.com/v1/badges/bf726e305f9665a03f0c/maintainability)](https://codeclimate.com/github/buldogic/frontend-project-46)
 
-
-[![cov](https://github.com/buldogic/frontend-project-46/workflows/test-check/coverage.svg)](https://github.com/buldogic/frontend-project-46/actions/workflows/test.yml)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/e7477d5c085f52c56155/test_coverage)](https://codeclimate.com/github/buldogic/frontend-project-46/test_coverage)
