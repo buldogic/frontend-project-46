@@ -1,11 +1,11 @@
-import _ from "lodash";
-import * as fs from "fs";
-import path from "path";
+import _ from 'lodash';
+import * as fs from 'fs';
+import path from 'path';
 
 const genDiff = (filepath1, filepath2) => {
-  const obj1 = JSON.parse(fs.readFileSync(path.resolve("./__fixtures__", filepath1)));
-  const obj2 = JSON.parse(fs.readFileSync(path.resolve("./__fixtures__", filepath2)));
-  const space = " ";
+  const obj1 = JSON.parse(fs.readFileSync(path.resolve('./__fixtures__', filepath1)));
+  const obj2 = JSON.parse(fs.readFileSync(path.resolve('./__fixtures__', filepath2)));
+  const space = ' ';
   const mergedObj = { ...obj1, ...obj2 };
   const keys = Object.keys(mergedObj);
   const result = _.orderBy(keys).map((key) => {
@@ -22,8 +22,7 @@ const genDiff = (filepath1, filepath2) => {
     }
     return `${space.repeat(4)}${key}: ${obj1[key]}`;
   });
-  return `{\n${result.join("\n")}\n}`;
+  return `{\n${result.join('\n')}\n}`;
 };
-
 
 export default genDiff;
