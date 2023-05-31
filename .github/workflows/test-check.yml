@@ -15,17 +15,17 @@ jobs:
 
       - name: Update Coverage Badge
         uses: we-cli/coverage-badge-action@main
-  # coverage:
-  # runs-on: ubuntu-latest
-  # steps:
-  #   - uses: actions/checkout@v2
+  coverage:
+  runs-on: ubuntu-latest
+  steps:
+    - uses: actions/checkout@v2
 
-  #   - run: npm install
-  #   - run: npm run coverage
+    - run: npm install
+    - run: npm run coverage
 
-  #   - name: check
-  #     uses: inzephirum/gha-test-coverage-check
-  #     with:
-  #       github_token: ${{ secrets.GITHUB_TOKEN }}
-  #       min_threshold: '100'
-  #       report_file_path: './coverage/lcov.info'
+    - name: check
+      uses: inzephirum/gha-test-coverage-check
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        min_threshold: '100'
+        report_file_path: './coverage/lcov.info'

@@ -12,3 +12,6 @@ lint fix:
 
 gendiff -h:
 	node gendiff.js 
+
+tets:
+	npx jest
