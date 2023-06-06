@@ -13,7 +13,7 @@ lint fix:
 gendiff -h:
 	node gendiff.js 
 
-tets:
+test:
 	npx jest
 
 
