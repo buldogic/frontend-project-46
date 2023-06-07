@@ -45,5 +45,5 @@ jobs:
           CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
           JEST_SOURCE_PATH: bin/gendiff
         with:
-          coverageCommand: make test-coverage
+          coverageCommand: make test
           debug: true
