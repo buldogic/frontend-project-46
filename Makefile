@@ -1,20 +1,44 @@
-install: 
+install: install-deps
+	npx simple-git-hooks
+
+run:
+	bin/nodejs-package.js 10
+
+install-deps:
 	npm ci
 
- publish:
-	 npm publish --dry-run
+test:
+	npm test --test-reporter=spec
 
- lint:
+test-coverage:
+	# TODO: set global flag --experimental-test-coverage
+	npm test
+
+lint:
 	npx eslint .
 
-lint fix:
-	npx eslint --fix .
+publish:
+	npm publish
 
-gendiff -h:
-	node gendiff.js 
+.PHONY: test
 
-test:
-	npx jest
+# install: 
+# 	npm ci
+
+#  publish:
+# 	 npm publish --dry-run
+
+#  lint:
+# 	npx eslint .
+
+# lint fix:
+# 	npx eslint --fix .
+
+# gendiff -h:
+# 	node gendiff.js 
+
+# test:
+# 	npx jest
 
 
 # build:
