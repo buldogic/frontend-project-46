@@ -43,6 +43,7 @@ jobs:
         # Add Code Climate secret key
         env:
           CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
+          JACOCO_SOURCE_PATH: __tests__/geindiff
         with:
           coverageCommand: make test-coverage
           debug: true
