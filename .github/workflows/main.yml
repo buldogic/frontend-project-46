@@ -45,5 +45,5 @@ jobs:
           CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
           # JEST_SOURCE_PATH: __tests__/index
         with:
-          coverageCommand: make test
+          coverageCommand: make test-coverage
           debug: true

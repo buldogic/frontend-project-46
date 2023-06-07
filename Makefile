@@ -14,4 +14,7 @@ gendiff -h:
 	node gendiff.js 
 
 test:
-	npm test cc-test-reporter
+	npm test 
+
+test-coverage:
+	npx jest --coverage
