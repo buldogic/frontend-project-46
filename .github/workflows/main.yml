@@ -43,7 +43,7 @@ jobs:
         # Add Code Climate secret key
         env:
           CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
-          JEST_SOURCE_PATH: __tests__/index
+          JEST_SOURCE_PATH: ./__tests__/index
         with:
           coverageCommand: make test
           debug: true

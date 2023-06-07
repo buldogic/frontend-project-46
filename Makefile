@@ -17,13 +17,13 @@ test:
 	npx jest
 
 
-build:
-	./gradlew clean build
+# build:
+# 	./gradlew clean build
 
-report:
-	./gradlew jacocoTestReport
+# report:
+# 	./gradlew jacocoTestReport
 
-build-run:
-	 build run
+# build-run:
+# 	 build run
 
-.PHONY: build
+# .PHONY: build
