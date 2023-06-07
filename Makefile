@@ -14,4 +14,4 @@ gendiff -h:
 	node gendiff.js 
 
 test:
-	npx jest
+	npm test --test-reporter=spec
