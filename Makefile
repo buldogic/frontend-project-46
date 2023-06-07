@@ -14,4 +14,4 @@ gendiff -h:
 	node gendiff.js 
 
 test:
-	npm test --test-reporter=spec
+	npm test --unhandled-rejections=strict
