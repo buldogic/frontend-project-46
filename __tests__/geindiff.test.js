@@ -1,15 +1,43 @@
-import genDiff from '../src/genDiff.js';
+import { test, expect } from '@jest/globals';
+import { readFileSync } from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import genDiff from '../src/index.js';
 
-const stileObj = '{\n  - follow: false\n    host: hexlet.io\n  - proxy: 123.234.53.22\n  - timeout: 50\n  + timeout: 20\n  + verbose: true\n}'
+const getFixturePath = (file) => {
+  const __filename = fileURLToPath(import.meta.url);
+  const __dirname = path.dirname(__filename);
+  return path.join(__dirname, '..', '__fixtures__', file);
+};
 
-test('genDif', () => {
-  expect(genDiff('file1.json', 'file2.json')).toEqual(stileObj);
+test('file json', () => {
+  const filename1 = getFixturePath('file1.json');
+  const filename2 = getFixturePath('file2.json');
+  const resultName = getFixturePath('file_result.txt');
+  const result = readFileSync(resultName, 'utf8');
+  expect(genDiff(filename1, filename2)).toEqual(result);
 });
 
-test('genDif1', () => {
-  expect(genDiff('file1.json', 'file2.json')).toEqual('{\n  - follow: false\n    host: hexlet.io\n  - proxy: 123.234.53.22\n  - timeout: 50\n  + timeout: 20\n  + verbose: true\n}');
+test('file yaml', () => {
+  const filename1 = getFixturePath('file1.yaml');
+  const filename2 = getFixturePath('file2.yaml');
+  const resultName = getFixturePath('file_result.txt');
+  const result = readFileSync(resultName, 'utf8');
+  expect(genDiff(filename1, filename2)).toEqual(result);
 });
 
-test('genDiff2', () => {
-  expect(genDiff('file2.json', 'file1.json')).toEqual('{\n  + follow: false\n    host: hexlet.io\n  + proxy: 123.234.53.22\n  - timeout: 20\n  + timeout: 50\n  - verbose: true\n}');
+test('file yml', () => {
+  const filename1 = getFixturePath('file1.yml');
+  const filename2 = getFixturePath('file2.yml');
+  const resultName = getFixturePath('file_result.txt');
+  const result = readFileSync(resultName, 'utf8');
+  expect(genDiff(filename1, filename2)).toEqual(result);
+});
+
+test('plain', () => {
+  const filename1 = getFixturePath('file1.yml');
+  const filename2 = getFixturePath('file2.yml');
+  const resultName = getFixturePath('file_result_plain.txt');
+  const result = readFileSync(resultName, 'utf8');
+  expect(genDiff(filename1, filename2, 'plain')).toEqual(result);
 });

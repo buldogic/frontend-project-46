@@ -2,7 +2,6 @@ import _ from 'lodash';
 
 const genIndent = (depth, replacer = ' ', spacesCount = 4) => replacer.repeat((depth * spacesCount) - 2);
 
-
 const stringify = (nodeValue, depth = 1) => {
   if (!(_.isObject(nodeValue))) {
     return `${nodeValue}`;
