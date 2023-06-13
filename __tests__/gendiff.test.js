@@ -10,6 +10,17 @@ const getFixturePath = (file) => {
   return path.join(__dirname, '..', '__fixtures__', file);
 };
 
+// test.each([
+//   getFixturePath('file1.json'), 
+//   getFixturePath('file2.json'), 
+//   getFixturePath('file_result.txt')])(
+//   'xyu',
+//   (a, b, result) => {
+//     expect(genDiff(a, b)).toEqual(result)
+//   },);  
+
+
+
 test('file json', () => {
   const filename1 = getFixturePath('file1.json');
   const filename2 = getFixturePath('file2.json');
