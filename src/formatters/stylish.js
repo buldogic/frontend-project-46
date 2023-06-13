@@ -24,7 +24,7 @@ const stylish = (tree) => {
         case 'changed':
           return `${genIndent(depth)}- ${item.name}: ${stringify(item.value1, depth)}\n${genIndent(depth)}+ ${item.name}: ${stringify(item.value2, depth)}`;
         default:
-          throw new Error('Invalid format');
+          throw new Error('Invalid format stylish');
       }
     });
     return result.join('\n');
