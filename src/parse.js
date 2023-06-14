@@ -1,15 +1,14 @@
 import YAML from 'js-yaml';
 
-const parse = (data, format) => {
-  switch (format) {
+const parse = (data, type) => {
+  switch (type) {
     case 'json':
       return JSON.parse(data);
     case 'yml':
-      return YAML.load(data);
     case 'yaml':
       return YAML.load(data);
     default:
-      throw new Error(`Invalid format: ${format}`);
+      throw new Error(`Invalid format: ${type}`);
   }
 };
 

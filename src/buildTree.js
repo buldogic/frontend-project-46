@@ -1,8 +1,8 @@
 import _ from 'lodash';
 
-const buildTree = (object1, object2) => {
-  const cloneObj1 = _.cloneDeep(object1);
-  const cloneObj2 = _.cloneDeep(object2);
+const buildTree = (data1, data2) => {
+  const cloneObj1 = _.cloneDeep(data1);
+  const cloneObj2 = _.cloneDeep(data2);
 
   const keys = _.sortBy(_.union(_.keys(cloneObj1), _.keys(cloneObj2)));
 

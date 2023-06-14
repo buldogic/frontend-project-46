@@ -8,12 +8,7 @@
     "gendiff": "bin/gendiff.js"
   },
   "scripts": {
-    "test": "node --experimental-vm-modules node_modules/.bin/jest"
-  },
-  "jest": {
-    "transformIgnorePatterns": [
-      "node_modules/(?!(<package-name>|<second-package-name>)/)"
-    ]
+    "test": "npx jest"
   },
   "author": "Andrey Afonin",
   "license": "ISC",
