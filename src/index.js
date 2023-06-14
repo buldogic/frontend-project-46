@@ -1,8 +1,8 @@
+import { readFileSync } from 'fs';
+import path from 'path';
 import buildTree from './buildTree.js';
 import format from './formatters/index.js';
 import parse from './parse.js';
-import { readFileSync } from 'fs';
-import path from 'path';
 
 const getAbsolutePath = (filepath) => path.resolve(process.cwd(), filepath);
 export const getType = (filepath) => path.extname(filepath).substring(1);
