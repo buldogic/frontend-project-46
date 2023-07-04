@@ -11,7 +11,7 @@ const stringify = (nodeValue, depth = 1) => {
 };
 const stylish = (tree) => {
   const iter = (node, depth = 1) => {
-    const result = node.map((item) => {
+    const result = node.flatMap((item) => {
       switch (item.status) {
         case 'nested':
           return `${genIndent(depth)}  ${item.name}: {\n${iter(item.children, depth + 1)}\n${genIndent(depth)}  }`;
@@ -22,7 +22,8 @@ const stylish = (tree) => {
         case 'unchanged':
           return `${genIndent(depth)}  ${item.name}: ${stringify(item.value, depth)}`;
         case 'changed':
-          return `${genIndent(depth)}- ${item.name}: ${stringify(item.value1, depth)}\n${genIndent(depth)}+ ${item.name}: ${stringify(item.value2, depth)}`;
+          return [`${genIndent(depth)}- ${item.name}: ${stringify(item.value1, depth)}`,
+            `${genIndent(depth)}+ ${item.name}: ${stringify(item.value2, depth)}`];
         default:
           throw new Error('Invalid format stylish');
       }
