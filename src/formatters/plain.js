@@ -5,7 +5,7 @@ const getChildren = (item) => item.children;
 const isValue = (value) => (_.isObject(value) ? '[complex value]' : value);
 const isString = (item) => (_.isString(item) && item !== '[complex value]' ? `'${item}'` : item);
 
-const plain = (tree, formatName) => {
+const plain = (tree) => {
   const iter = (node, name = '') => {
     const result = node.flatMap((item) => {
       switch (item.status) {
@@ -20,7 +20,7 @@ const plain = (tree, formatName) => {
         case 'nested':
           return iter(getChildren(item), `${name + getName(item)}.`);
         default:
-          throw new Error(`Invalid format plain ${formatName}`);
+          throw new Error(`Invalid format plain ${tree}`);
       }
     });
     return result.join('\n');
