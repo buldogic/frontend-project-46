@@ -20,7 +20,7 @@ const plain = (tree) => {
         case 'nested':
           return iter(getChildren(item), `${name + getName(item)}.`);
         default:
-          throw new Error('Invalid format plain');
+          throw new Error(`Invalid format plain ${tree}`);
       }
     });
     return result.join('\n');

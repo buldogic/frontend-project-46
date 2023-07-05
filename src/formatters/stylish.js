@@ -25,7 +25,7 @@ const stylish = (tree) => {
           return [`${genIndent(depth)}- ${item.name}: ${stringify(item.value1, depth)}`,
             `${genIndent(depth)}+ ${item.name}: ${stringify(item.value2, depth)}`];
         default:
-          throw new Error('Invalid format stylish');
+          throw new Error(`Invalid format stylish ${tree}`);
       }
     });
     return result.join('\n');
