@@ -9,7 +9,7 @@ const stringify = (nodeValue, depth = 1) => {
   const result = Object.entries(nodeValue).map(([key, value]) => `${genIndent(depth + 1)}  ${key}: ${stringify(value, depth + 1)}`);
   return `{\n${result.join('\n')}\n  ${genIndent(depth)}}`;
 };
-const stylish = (tree) => {
+const stylish = (tree, formatName) => {
   const iter = (node, depth = 1) => {
     const result = node.flatMap((item) => {
       switch (item.status) {
@@ -25,7 +25,7 @@ const stylish = (tree) => {
           return [`${genIndent(depth)}- ${item.name}: ${stringify(item.value1, depth)}`,
             `${genIndent(depth)}+ ${item.name}: ${stringify(item.value2, depth)}`];
         default:
-          throw new Error(`Invalid format stylish ${tree}`);
+          throw new Error(`Invalid format stylish ${formatName}`);
       }
     });
     return result.join('\n');
